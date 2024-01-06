@@ -1,4 +1,4 @@
-import { AccountRegistrationWizard } from './widgets/AccountRegistrationWizard';
+import { AccountRegistrationWizard } from '@/widgets/AccountRegistrationWizard';
 
 export const App = () => {
   return <AccountRegistrationWizard />;
