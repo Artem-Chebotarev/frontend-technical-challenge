@@ -1,5 +1,9 @@
 import { AccountRegistrationWizard } from '@/widgets/AccountRegistrationWizard';
 
 export const App = () => {
-  return <AccountRegistrationWizard />;
+  return (
+    <div className='Content'>
+      <AccountRegistrationWizard />
+    </div>
+  );
 };

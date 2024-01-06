@@ -1,0 +1,10 @@
+.WidgetContainer {
+  max-width: 100%;
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  border: 10px solid var(--color-green);
+  border-radius: var(--border-radius-form);
+}
