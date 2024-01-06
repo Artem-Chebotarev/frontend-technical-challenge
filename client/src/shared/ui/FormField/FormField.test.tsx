@@ -23,4 +23,9 @@ describe('FormField', () => {
 
     expect(hasInputValue(input, 'John')).toBe(true);
   });
+
+  test('change FormField with error message', () => {
+    render(<FormField label='Default Label' error />);
+    expect(screen.getByTestId('FieldError')).toBeInTheDocument();
+  });
 });
