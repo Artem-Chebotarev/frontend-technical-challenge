@@ -30,7 +30,7 @@ export const FormField = (props: IFormFieldProps) => {
     label,
     id,
     name,
-    type,
+    type = 'text',
     required,
     defaultValue,
     placeholder,

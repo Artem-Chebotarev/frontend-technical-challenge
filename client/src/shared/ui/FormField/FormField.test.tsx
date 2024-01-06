@@ -2,20 +2,34 @@ import { render, fireEvent, screen } from '@testing-library/react';
 
 import { FormField } from './FormField';
 
-describe('FormField', () => {
-  test('render FormField', () => {
-    render(<FormField label='Default Label' />);
-    expect(screen.getByTestId('FormField')).toBeInTheDocument();
+describe('FormField Component', () => {
+  test('renders label and input with default values', () => {
+    render(<FormField label='Default label' id={'default'} />);
+
+    const label = screen.getByLabelText('Default label');
+    const input = screen.getByTestId('FormField');
+
+    expect(label).toBeInTheDocument();
+    expect(input).toBeInTheDocument();
+    expect(input).toHaveAttribute('type', 'text');
   });
 
-  test('change FormField', () => {
+  test('renders required indicator when required prop is true', () => {
+    render(<FormField label='Required field' id={'required'} required />);
+
+    const label = screen.getByLabelText('Required field*');
+
+    expect(label).toBeInTheDocument();
+  });
+
+  test('triggers onChange callback when input is changed', () => {
     type TestElement = Document | Element | Window | Node;
 
     function hasInputValue(event: TestElement, inputValue: string) {
       return screen.getByDisplayValue(inputValue) === event;
     }
 
-    render(<FormField label='Default Label' />);
+    render(<FormField label='Default label' />);
 
     const input = screen.getByTestId('FormField');
 
@@ -24,8 +38,12 @@ describe('FormField', () => {
     expect(hasInputValue(input, 'John')).toBe(true);
   });
 
-  test('change FormField with error message', () => {
-    render(<FormField label='Default Label' error />);
-    expect(screen.getByTestId('FieldError')).toBeInTheDocument();
+  test('renders error message when error prop is true', () => {
+    render(<FormField label='Default label' error />);
+
+    const errorSpan = screen.getByTestId('FieldError');
+
+    expect(errorSpan).toBeInTheDocument();
+    expect(errorSpan).toHaveTextContent('Please complete this required field.');
   });
 });
