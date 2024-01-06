@@ -1,0 +1,9 @@
+@import './shared/styles/reset';
+@import '../fonts/SourceSansPro/sourceSansPro.css';
+@import './shared/styles/global';
+
+body {
+  font: var(--font-m);
+  font-weight: 400;
+  color: var(--color-black);
+}
