@@ -1,0 +1,31 @@
+.Button {
+  cursor: pointer;
+  background-color: var(--color-lightgreen);
+  color: var(--color-white);
+  font-weight: 600;
+  padding: 0.4rem 0.7rem;
+  border-radius: var(--border-radius-button);
+  border: none;
+
+  transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out,
+    color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: var(--color-green);
+    border-color: var(--color-green);
+  }
+}
+
+.disabledGrey {
+  background: var(--color-grey);
+}
+
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.fullWidth {
+  width: 100%;
+}

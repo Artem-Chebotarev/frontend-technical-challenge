@@ -64,7 +64,11 @@ export const FormField = (props: IFormFieldProps) => {
       />
 
       {/* Field Error */}
-      {error && <span className={cls.FieldError}>{errorMsg}</span>}
+      {error && (
+        <span className={cls.FieldError} data-testid='FieldError'>
+          {errorMsg}
+        </span>
+      )}
     </div>
   );
 };

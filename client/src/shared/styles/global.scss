@@ -20,8 +20,15 @@
     */
   --color-black: #000000;
   --color-white: #ffffff;
+  --color-grey: #2a2828;
   --color-lightgrey: #eeeeee;
   --color-green: #038851;
   --color-lightgreen: #29db91;
   --color-red: #ff5f3b;
+
+  /*
+    * Border radius
+    */
+  --border-radius-input: 0.75rem;
+  --border-radius-button: 12.5rem;
 }
