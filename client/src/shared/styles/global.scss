@@ -4,8 +4,8 @@
   /*
     * M
     */
-  --font-size-m: 14px;
-  --font-line-m: 24px;
+  --font-size-m: 16px;
+  --font-line-m: 20px;
   --font-m: var(--font-size-m) / var(--font-line-m) var(--font-family-main);
 
   /*
@@ -20,4 +20,8 @@
     */
   --color-black: #000000;
   --color-white: #ffffff;
+  --color-lightgrey: #eeeeee;
+  --color-green: #038851;
+  --color-lightgreen: #29db91;
+  --color-red: #ff5f3b;
 }

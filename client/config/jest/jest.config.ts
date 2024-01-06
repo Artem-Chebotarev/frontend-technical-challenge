@@ -3,6 +3,7 @@ export default {
     coveragePathIgnorePatterns: ['/node_modules/'],
     moduleNameMapper: {
         '\\.s?css$': 'identity-obj-proxy',
+        '^@/(.*)$': '<rootDir>/src/$1',
     },
     transform: {
         '^.+\\.(ts|tsx)$': 'babel-jest',
