@@ -1,0 +1,37 @@
+.Img {
+  max-width: 100%;
+  display: block;
+}
+
+.Tile {
+  border-radius: var(--border-radius-form);
+  position: relative;
+
+  input {
+    position: absolute;
+    right: 50%;
+    opacity: 0;
+
+    & + .ImgContainer {
+      border: 0.5rem solid var(--color-lightgrey);
+      border-radius: var(--border-radius-form);
+      overflow: hidden;
+    }
+
+    &:checked {
+      & + .ImgContainer {
+        border-color: var(--color-green);
+      }
+    }
+
+    &:focus-visible {
+      & + .ImgContainer {
+        border-color: var(--color-lightgreen);
+      }
+    }
+  }
+
+  label {
+    cursor: pointer;
+  }
+}

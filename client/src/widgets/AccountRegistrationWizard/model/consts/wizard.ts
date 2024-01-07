@@ -7,6 +7,8 @@ export const wizardDataDefault: IWizardData = {
     businessName: '',
     businessSize: 0,
     businessType: 'midmarket',
+    posIds: [],
+    channelIds: [],
 };
 
 export const MAX_STEPS = 5;

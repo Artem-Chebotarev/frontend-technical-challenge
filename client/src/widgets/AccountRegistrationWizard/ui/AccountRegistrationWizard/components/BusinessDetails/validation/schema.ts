@@ -1,3 +1,4 @@
+import { TBusinessType } from '@/widgets/AccountRegistrationWizard/model/types';
 import * as yup from 'yup';
 
 export const validationSchema = yup.object({
@@ -11,7 +12,7 @@ export const validationSchema = yup.object({
     .required('Please complete this required field.')
     .positive('Business size must be greater than 0'),
   businessType: yup
-    .string()
+    .mixed<TBusinessType>()
     .required('Please complete this required field.')
     .oneOf(['smb', 'midmarket', 'enterprise'], 'Please enter a valid business type')
 });

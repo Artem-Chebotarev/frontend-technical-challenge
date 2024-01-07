@@ -1,5 +1,5 @@
 import { useWizardContext } from '@/widgets/AccountRegistrationWizard/model/context/hooks/useWizardContext';
-import { UserInput } from '@/widgets/AccountRegistrationWizard/model/types';
+import { IPersonalDetails } from '@/widgets/AccountRegistrationWizard/model/types';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
@@ -10,7 +10,7 @@ export const usePersonalDetails = () => {
 
   const { firstName, lastName, email } = wizardData;
 
-  const defaultValues: UserInput['personalDetails'] = {
+  const defaultValues: IPersonalDetails = {
     firstName,
     lastName,
     email,
@@ -19,7 +19,7 @@ export const usePersonalDetails = () => {
   const {
     register,
     formState: { errors },
-  } = useForm<UserInput['personalDetails']>({
+  } = useForm<IPersonalDetails>({
     defaultValues: defaultValues,
     resolver: yupResolver(validationSchema),
     mode: 'onTouched',
