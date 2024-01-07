@@ -1,5 +1,6 @@
-import { FormField } from '@/shared/ui/FormField';
+import { Field } from '@/shared/ui/Field';
 import { usePersonalDetails } from './hooks/usePersonalDetails';
+import { Input } from '@/shared/ui/Input';
 
 export const PersonalDetails = () => {
   const { errors, refFirstName, refLastName, refEmail, restFirstName, restLastName, restEmail } =
@@ -11,40 +12,37 @@ export const PersonalDetails = () => {
       <legend>Personal Details</legend>
 
       {/* First name field */}
-      <FormField
-        ref={refFirstName}
-        id='firstName'
+      <Field
         label='First name'
-        placeholder='First name'
+        htmlFor='firstName'
         required
         error={Boolean(errors.firstName?.message)}
         errorMsg={errors.firstName?.message}
-        {...restFirstName}
-      />
+      >
+        <Input ref={refFirstName} id='firstName' placeholder='First name' {...restFirstName} />
+      </Field>
 
       {/* Last name field */}
-      <FormField
-        ref={refLastName}
-        id='lastName'
+      <Field
         label='Last name'
-        placeholder='Last name'
+        htmlFor='lastName'
         required
         error={Boolean(errors.lastName?.message)}
         errorMsg={errors.lastName?.message}
-        {...restLastName}
-      />
+      >
+        <Input ref={refLastName} id='lastName' placeholder='Last name' {...restLastName} />
+      </Field>
 
       {/* Email field */}
-      <FormField
-        ref={refEmail}
-        id='email'
+      <Field
         label='Email'
-        placeholder='Email'
+        htmlFor='email'
         required
         error={Boolean(errors.email?.message)}
         errorMsg={errors.email?.message}
-        {...restEmail}
-      />
+      >
+        <Input ref={refEmail} id='email' placeholder='Email' {...restEmail} />
+      </Field>
     </fieldset>
   );
 };

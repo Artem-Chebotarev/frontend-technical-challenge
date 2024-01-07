@@ -16,8 +16,6 @@ export const useBusinessDetails = () => {
     businessType,
   };
 
-  console.log(businessType, 'businessType');
-
   const {
     register,
     formState: { errors },

@@ -1,9 +1,9 @@
 import { PersonalDetails } from '../PersonalDetails/PersonalDetails';
+import { BusinessDetails } from '../BusinessDetails/BusinessDetails';
 import { useWizardContext } from '../../../../model/context/hooks/useWizardContext';
 import { Controls } from '../Controls/Controls';
 
 import cls from './WidgetContainer.module.scss';
-import { BusinessDetails } from '../BusinessDetails/BusinessDetails';
 
 export const WidgetContainer = () => {
   const { activeStep, setWizardData } = useWizardContext();

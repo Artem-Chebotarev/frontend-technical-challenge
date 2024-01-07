@@ -11,7 +11,14 @@ describe('Controls Component', () => {
         value={{
           activeStep: 1,
           setActiveStep: setActiveStep,
-          wizardData: { firstName: 'Abc', lastName: 'Abc', email: '123@gmail.com' },
+          wizardData: {
+            firstName: 'Abc',
+            lastName: 'Abc',
+            email: '123@gmail.com',
+            businessName: 'abc',
+            businessSize: 0,
+            businessType: 'smb',
+          },
           setWizardData: () => {},
           isNextStepEnabled: false,
           setIsNextStepEnabled: () => {},
@@ -21,8 +28,8 @@ describe('Controls Component', () => {
       </RegistrationWizardContext.Provider>,
     );
 
-    const nextButtonElement = screen.getByText('Next Step');
-    expect(nextButtonElement).toBeInTheDocument();
+    const nextButton = screen.getByText('Next Step');
+    expect(nextButton).toBeInTheDocument();
   });
 
   test('increments activeStep when Next Step button is clicked', () => {
@@ -33,7 +40,14 @@ describe('Controls Component', () => {
         value={{
           activeStep: 1,
           setActiveStep: setActiveStep,
-          wizardData: { firstName: 'Abc', lastName: 'Abc', email: '123@gmail.com' },
+          wizardData: {
+            firstName: 'Abc',
+            lastName: 'Abc',
+            email: '123@gmail.com',
+            businessName: 'abc',
+            businessSize: 0,
+            businessType: 'smb',
+          },
           setWizardData: () => {},
           isNextStepEnabled: false,
           setIsNextStepEnabled: () => {},
@@ -43,8 +57,39 @@ describe('Controls Component', () => {
       </RegistrationWizardContext.Provider>,
     );
 
-    const nextButtonElement = screen.getByText('Next Step');
-    fireEvent.click(nextButtonElement);
+    const nextButton = screen.getByText('Next Step');
+    fireEvent.click(nextButton);
+
+    expect(setActiveStep).toHaveBeenCalledTimes(1);
+  });
+
+  test('decrements activeStep when Prev Step button is clicked', () => {
+    const setActiveStep = jest.fn();
+
+    render(
+      <RegistrationWizardContext.Provider
+        value={{
+          activeStep: 2,
+          setActiveStep: setActiveStep,
+          wizardData: {
+            firstName: 'Abc',
+            lastName: 'Abc',
+            email: '123@gmail.com',
+            businessName: 'abc',
+            businessSize: 0,
+            businessType: 'smb',
+          },
+          setWizardData: () => {},
+          isNextStepEnabled: false,
+          setIsNextStepEnabled: () => {},
+        }}
+      >
+        <Controls />
+      </RegistrationWizardContext.Provider>,
+    );
+
+    const prevButton = screen.getByText('Prev Step');
+    fireEvent.click(prevButton);
 
     expect(setActiveStep).toHaveBeenCalledTimes(1);
   });
