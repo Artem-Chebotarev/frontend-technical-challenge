@@ -1,7 +1,5 @@
 import { useWizardContext } from '@/widgets/AccountRegistrationWizard/model/context/hooks/useWizardContext';
 
-import cls from './Complete.module.scss';
-
 export const Complete = () => {
   const { error } = useWizardContext();
 
@@ -12,7 +10,7 @@ export const Complete = () => {
 
       {/* Additional text */}
       <p>Please check the previous form steps and send your data by clicking Done button</p>
-      {error && <p className={cls.ErrorText}>{error}</p>}
+      {error && <p className='ErrorText'>{error}</p>}
     </fieldset>
   );
 };

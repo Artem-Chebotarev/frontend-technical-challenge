@@ -11,7 +11,7 @@ export const PointOfSale = () => {
 
   // Show error on the screen
   if (error) {
-    return <p>{error}</p>;
+    return <p className='ErrorText'>{error}</p>;
   }
 
   // Show loading on the screen
