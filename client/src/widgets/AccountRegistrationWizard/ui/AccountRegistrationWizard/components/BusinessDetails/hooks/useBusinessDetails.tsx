@@ -1,5 +1,5 @@
 import { useWizardContext } from '@/widgets/AccountRegistrationWizard/model/context/hooks/useWizardContext';
-import { UserInput } from '@/widgets/AccountRegistrationWizard/model/types';
+import { IBusinessDetails } from '@/widgets/AccountRegistrationWizard/model/types';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
@@ -10,7 +10,7 @@ export const useBusinessDetails = () => {
 
   const { businessName, businessSize, businessType } = wizardData;
 
-  const defaultValues: UserInput['businessDetails'] = {
+  const defaultValues: Omit<IBusinessDetails, 'posIds' | 'channelIds'> = {
     businessName,
     businessSize,
     businessType,
@@ -19,7 +19,7 @@ export const useBusinessDetails = () => {
   const {
     register,
     formState: { errors },
-  } = useForm<UserInput['businessDetails']>({
+  } = useForm<Omit<IBusinessDetails, 'posIds' | 'channelIds'>>({
     defaultValues: defaultValues,
     resolver: yupResolver(validationSchema),
     mode: 'onTouched',

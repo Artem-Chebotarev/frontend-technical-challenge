@@ -10,7 +10,7 @@ export const Controls = () => {
   return (
     <div className={cls.ButtonContainer}>
       {/* Prev Step Button */}
-      {activeStep > 1 && activeStep < 5 && (
+      {activeStep > 1 && activeStep < MAX_STEPS && (
         <Button onClick={() => setActiveStep((prev) => prev - 1)}>Prev Step</Button>
       )}
 
