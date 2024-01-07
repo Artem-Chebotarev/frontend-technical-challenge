@@ -3,6 +3,7 @@ import { useWizardContext } from '../../../../model/context/hooks/useWizardConte
 import { Controls } from '../Controls/Controls';
 
 import cls from './WidgetContainer.module.scss';
+import { BusinessDetails } from '../BusinessDetails/BusinessDetails';
 
 export const WidgetContainer = () => {
   const { activeStep, setWizardData } = useWizardContext();
@@ -12,6 +13,8 @@ export const WidgetContainer = () => {
     switch (step) {
       case 1:
         return <PersonalDetails />;
+      case 2:
+        return <BusinessDetails />;
       default:
         return null;
     }
