@@ -1,6 +1,7 @@
-import { FormField } from '@/shared/ui/FormField';
+import { Field } from '@/shared/ui/Field';
+import { Input } from '@/shared/ui/Input';
+import { Select } from '@/shared/ui/Select';
 import { useBusinessDetails } from './hooks/useBusinessDetails';
-import { FormSelect } from '@/shared/ui/FormSelect';
 
 export const BusinessDetails = () => {
   const {
@@ -19,48 +20,58 @@ export const BusinessDetails = () => {
       <legend>Business Details</legend>
 
       {/* Business name field */}
-      <FormField
-        ref={refBusinessName}
-        id='firstName'
+      <Field
         label='Business name'
-        placeholder='Business name'
+        htmlFor='businessName'
         required
         error={Boolean(errors.businessName?.message)}
         errorMsg={errors.businessName?.message}
-        {...restBusinessName}
-      />
+      >
+        <Input
+          ref={refBusinessName}
+          id='businessName'
+          placeholder='Business name'
+          {...restBusinessName}
+        />
+      </Field>
 
       {/* Business size field */}
-      <FormField
-        ref={refBusinessSize}
-        id='businessType'
+      <Field
         label='Business size'
-        placeholder='Business size'
-        type='number'
-        min='1'
+        htmlFor='businessSize'
         required
         error={Boolean(errors.businessSize?.message)}
         errorMsg={errors.businessSize?.message}
-        {...restBusinessSize}
-      />
+      >
+        <Input
+          ref={refBusinessSize}
+          id='businessSize'
+          placeholder='Business size'
+          type='number'
+          min='1'
+          {...restBusinessSize}
+        />
+      </Field>
 
       {/* Business type field */}
-      <FormSelect
-        ref={refBusinessType}
-        id='businessName'
+      <Field
         label='Business type'
-        type='select'
+        htmlFor='businessType'
         required
         error={Boolean(errors.businessType?.message)}
         errorMsg={errors.businessType?.message}
-        {...restBusinessType}
       >
-        <option value='smb'>SMB</option>
-        <option value='midmarket'>
-          Midmarket
-        </option>
-        <option value='enterprise'>Enterprise</option>
-      </FormSelect>
+        <Select
+          ref={refBusinessType}
+          id='businessType'
+          placeholder='Business size'
+          {...restBusinessType}
+        >
+          <option value='smb'>SMB</option>
+          <option value='midmarket'>Midmarket</option>
+          <option value='enterprise'>Enterprise</option>
+        </Select>
+      </Field>
     </fieldset>
   );
 };

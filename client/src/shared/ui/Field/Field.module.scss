@@ -1,0 +1,15 @@
+.FieldContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.FieldLabel {
+  font-weight: 600;
+  align-self: flex-start;
+}
+
+.FieldError {
+  color: var(--color-red);
+  font-size: 0.875rem;
+}
