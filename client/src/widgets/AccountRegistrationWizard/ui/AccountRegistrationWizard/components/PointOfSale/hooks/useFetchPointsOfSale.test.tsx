@@ -4,7 +4,7 @@ import { useFetchPointsOfSale } from './useFetchPointsOfSale';
 
 jest.mock('@/shared/lib/fetchData/fetchData');
 
-describe('useFetchPointsOfSale hoo', () => {
+describe('useFetchPointsOfSale hook', () => {
   beforeEach(() => {
     jest.resetAllMocks();
   });

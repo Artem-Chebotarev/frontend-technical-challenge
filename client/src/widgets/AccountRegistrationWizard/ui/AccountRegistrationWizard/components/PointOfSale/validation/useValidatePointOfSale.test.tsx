@@ -11,7 +11,7 @@ describe('useValidatePointOfSale hook', () => {
 
   test('enables next step when posIds has items', () => {
     const mockWizardContext = {
-      wizardData: { posIds: ['1', '2'] },
+      wizardData: { posIds: [1, 2] },
       setIsNextStepEnabled: jest.fn(),
     };
 
