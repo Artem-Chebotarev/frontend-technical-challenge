@@ -1,12 +1,15 @@
 const express = require('express');
 const app = express();
 const fs = require('fs');
+const cors = require('cors');
 const POINT_OF_SALES = require('./pos.json');
 const CHANNELS = require('./channel.json');
 
 const PORT = 5000;
 
 app.use(express.json());
+
+app.use(cors());
 
 app.get('/pos', (req, res) => {
     res.json(POINT_OF_SALES);
