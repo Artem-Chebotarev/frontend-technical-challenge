@@ -17,7 +17,7 @@ export const BusinessDetails = () => {
   return (
     <fieldset>
       {/* Info about active step */}
-      <legend>Business Details</legend>
+      <legend data-testid='BusinessDetails.Legend'>Business Details</legend>
 
       {/* Business name field */}
       <Field
@@ -32,6 +32,7 @@ export const BusinessDetails = () => {
           id='businessName'
           placeholder='Business name'
           {...restBusinessName}
+          data-testid='BusinessDetails.BusinessNameInput'
         />
       </Field>
 
@@ -50,6 +51,7 @@ export const BusinessDetails = () => {
           type='number'
           min='1'
           {...restBusinessSize}
+          data-testid='BusinessDetails.BusinessSizeInput'
         />
       </Field>
 
@@ -66,6 +68,7 @@ export const BusinessDetails = () => {
           id='businessType'
           placeholder='Business size'
           {...restBusinessType}
+          data-testid='BusinessDetails.BusinessTypeSelect'
         >
           <option value='smb'>SMB</option>
           <option value='midmarket'>Midmarket</option>

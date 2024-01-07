@@ -1,36 +1,36 @@
 import { renderHook } from '@testing-library/react-hooks';
 import { useWizardContext } from '@/widgets/AccountRegistrationWizard/model/context/hooks/useWizardContext';
-import { useValidatePointOfSale } from './useValidatePointOfSale';
+import { useValidateDeliveryChannel } from './useValidateDeliveryChannel';
 
 jest.mock('@/widgets/AccountRegistrationWizard/model/context/hooks/useWizardContext');
 
-describe('useValidatePointOfSale hook', () => {
+describe('useValidateDeliveryChannel hook', () => {
   beforeEach(() => {
     jest.resetAllMocks();
   });
 
-  test('enables next step when posIds has items', () => {
+  test('enables next step when channelIds has items', () => {
     const mockWizardContext = {
-      wizardData: { posIds: [1, 2] },
+      wizardData: { channelIds: [1, 2] },
       setIsNextStepEnabled: jest.fn(),
     };
 
     (useWizardContext as jest.Mock).mockReturnValue(mockWizardContext);
 
-    renderHook(() => useValidatePointOfSale());
+    renderHook(() => useValidateDeliveryChannel());
 
     expect(mockWizardContext.setIsNextStepEnabled).toHaveBeenCalledWith(true);
   });
 
-  test('disables next step when posIds is empty', () => {
+  test('disables next step when channelIds is empty', () => {
     const mockWizardContext = {
-      wizardData: { posIds: [] },
+      wizardData: { channelIds: [] },
       setIsNextStepEnabled: jest.fn(),
     };
 
     (useWizardContext as jest.Mock).mockReturnValue(mockWizardContext);
 
-    renderHook(() => useValidatePointOfSale());
+    renderHook(() => useValidateDeliveryChannel());
 
     expect(mockWizardContext.setIsNextStepEnabled).toHaveBeenCalledWith(false);
   });

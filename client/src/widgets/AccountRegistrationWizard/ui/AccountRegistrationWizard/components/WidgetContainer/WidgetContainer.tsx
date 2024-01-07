@@ -2,8 +2,10 @@ import { IWizardData, TEventValue } from '@/widgets/AccountRegistrationWizard/mo
 import { PersonalDetails } from '../PersonalDetails/PersonalDetails';
 import { BusinessDetails } from '../BusinessDetails/BusinessDetails';
 import { PointOfSale } from '../PointOfSale/PointOfSale';
-import { useWizardContext } from '../../../../model/context/hooks/useWizardContext';
+import { DeliveryChannel } from '../DeliveryChannel/DeliveryChannel';
+import { Complete } from '../Complete/Complete';
 import { Controls } from '../Controls/Controls';
+import { useWizardContext } from '../../../../model/context/hooks/useWizardContext';
 
 import cls from './WidgetContainer.module.scss';
 
@@ -19,6 +21,10 @@ export const WidgetContainer = () => {
         return <BusinessDetails />;
       case 3:
         return <PointOfSale />;
+      case 4:
+        return <DeliveryChannel />;
+      case 5:
+        return <Complete />;
       default:
         return null;
     }
