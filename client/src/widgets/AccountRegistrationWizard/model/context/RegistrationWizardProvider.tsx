@@ -21,6 +21,7 @@ export const RegistrationWizardProvider = (props: RegistrationWizardProviderProp
   const [activeStep, setActiveStep] = useState<number>(initialActiveStep);
   const [wizardData, setWizardData] = useState<IWizardData>(initialWizardData);
   const [isNextStepEnabled, setIsNextStepEnabled] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
 
   const contextValue: RegistrationWizardContextProps = {
     activeStep,
@@ -29,6 +30,8 @@ export const RegistrationWizardProvider = (props: RegistrationWizardProviderProp
     setWizardData,
     isNextStepEnabled,
     setIsNextStepEnabled,
+    error,
+    setError,
   };
 
   // Change active step in LS
