@@ -3,7 +3,10 @@ import { IWizardData } from "../types";
 export const wizardDataDefault: IWizardData = {
     firstName: '',
     lastName: '',
-    email: '', 
+    email: '',
+    businessName: '',
+    businessSize: 0,
+    businessType: 'midmarket',
 };
 
 export const MAX_STEPS = 5;

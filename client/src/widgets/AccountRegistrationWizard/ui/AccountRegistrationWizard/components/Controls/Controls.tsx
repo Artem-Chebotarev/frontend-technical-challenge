@@ -7,22 +7,24 @@ import cls from './Controls.module.scss';
 export const Controls = () => {
   const { activeStep, isNextStepEnabled, setActiveStep } = useWizardContext();
 
-  const handleNextOnChange = () => {
-    setActiveStep((prev) => prev + 1);
-  };
-
   return (
-    <>
+    <div className={cls.ButtonContainer}>
+      {/* Prev Step Button */}
+      {activeStep > 1 && activeStep < 5 && (
+        <Button onClick={() => setActiveStep((prev) => prev - 1)}>Prev Step</Button>
+      )}
+
+      {/* Next Step Button */}
       {activeStep < MAX_STEPS && (
         <Button
           className={cls.NextButton}
           disabled={!isNextStepEnabled}
-          onClick={handleNextOnChange}
+          onClick={() => setActiveStep((prev) => prev + 1)}
           theme={!isNextStepEnabled ? ButtonTheme.DISABLED_GREY : ButtonTheme.ACTIVE_GREEN}
         >
           Next Step
         </Button>
       )}
-    </>
+    </div>
   );
 };
