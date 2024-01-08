@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, waitFor } from '@testing-library/react';
 import { fetchData } from '@/shared/lib/fetchData/fetchData';
 import { useFetchDeliveryChannels } from './useFetchDeliveryChannels';
 
@@ -13,11 +13,11 @@ describe('useFetchDeliveryChannels hook', () => {
     const mockData = [{ id: 1, name: 'Channel 1' }];
     (fetchData as jest.Mock).mockResolvedValue(mockData);
 
-    const { result, waitForNextUpdate } = renderHook(() => useFetchDeliveryChannels());
+    const { result } = renderHook(() => useFetchDeliveryChannels());
 
     expect(result.current.isLoading).toBeTruthy();
 
-    await waitForNextUpdate();
+    await waitFor(() => !result.current.isLoading);
 
     expect(result.current.deliveryChannels).toEqual(mockData);
     expect(result.current.isLoading).toBeFalsy();
@@ -28,11 +28,11 @@ describe('useFetchDeliveryChannels hook', () => {
     const errorMessage = 'Failed to fetch delivery channels.';
     (fetchData as jest.Mock).mockRejectedValue(new Error(errorMessage));
 
-    const { result, waitForNextUpdate } = renderHook(() => useFetchDeliveryChannels());
+    const { result } = renderHook(() => useFetchDeliveryChannels());
 
     expect(result.current.isLoading).toBeTruthy();
 
-    await waitForNextUpdate();
+    await waitFor(() => !result.current.isLoading);
 
     expect(result.current.deliveryChannels).toEqual([]);
     expect(result.current.isLoading).toBeFalsy();
