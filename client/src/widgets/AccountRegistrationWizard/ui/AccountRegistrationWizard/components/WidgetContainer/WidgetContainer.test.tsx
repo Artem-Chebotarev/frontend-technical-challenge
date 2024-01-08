@@ -21,6 +21,8 @@ const value = {
   setIsNextStepEnabled: () => {},
   error: '',
   setError: () => {},
+  isLoading: false,
+  setIsLoading: () => {},
 };
 
 describe('WidgetContainer Component', () => {

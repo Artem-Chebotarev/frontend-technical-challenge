@@ -12,6 +12,8 @@ export interface RegistrationWizardContextProps {
     setIsNextStepEnabled: Dispatch<SetStateAction<boolean>>;
     error: string;
     setError: Dispatch<SetStateAction<string>>;
+    isLoading: boolean;
+    setIsLoading: Dispatch<SetStateAction<boolean>>;
 }
 
 const initialContext = {
@@ -23,6 +25,8 @@ const initialContext = {
     setIsNextStepEnabled: () => {},
     error: '',
     setError: () => {},
+    isLoading: false,
+    setIsLoading: () => {},
 }
 
 export const RegistrationWizardContext = createContext<RegistrationWizardContextProps>(initialContext);

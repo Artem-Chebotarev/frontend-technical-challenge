@@ -23,6 +23,8 @@ const value = {
   setIsNextStepEnabled: () => {},
   error: '',
   setError: () => {},
+  isLoading: false,
+  setIsLoading: () => {},
 };
 
 describe('Controls component', () => {
@@ -71,6 +73,8 @@ describe('Controls component', () => {
           setIsNextStepEnabled: () => {},
           error: '',
           setError: () => {},
+          isLoading: false,
+          setIsLoading: () => {},
         }}
       >
         <Controls />
@@ -106,6 +110,8 @@ describe('Controls component', () => {
           setIsNextStepEnabled: () => {},
           error: '',
           setError: () => {},
+          isLoading: false,
+          setIsLoading: () => {},
         }}
       >
         <Controls />
