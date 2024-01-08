@@ -1,4 +1,4 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, waitFor } from '@testing-library/react';
 import { fetchData } from '@/shared/lib/fetchData/fetchData';
 import { useFetchPointsOfSale } from './useFetchPointsOfSale';
 
@@ -13,11 +13,11 @@ describe('useFetchPointsOfSale hook', () => {
     const mockData = [{ id: 1, name: 'Point of Sale 1' }];
     (fetchData as jest.Mock).mockResolvedValue(mockData);
 
-    const { result, waitForNextUpdate } = renderHook(() => useFetchPointsOfSale());
+    const { result } = renderHook(() => useFetchPointsOfSale());
 
     expect(result.current.isLoading).toBeTruthy();
 
-    await waitForNextUpdate();
+    await waitFor(() => !result.current.isLoading);
 
     expect(result.current.pointsOfSale).toEqual(mockData);
     expect(result.current.isLoading).toBeFalsy();
@@ -28,11 +28,11 @@ describe('useFetchPointsOfSale hook', () => {
     const errorMessage = 'Failed to fetch points of sale.';
     (fetchData as jest.Mock).mockRejectedValue(new Error(errorMessage));
 
-    const { result, waitForNextUpdate } = renderHook(() => useFetchPointsOfSale());
+    const { result } = renderHook(() => useFetchPointsOfSale());
 
     expect(result.current.isLoading).toBeTruthy();
 
-    await waitForNextUpdate();
+    await waitFor(() => !result.current.isLoading);
 
     expect(result.current.pointsOfSale).toEqual([]);
     expect(result.current.isLoading).toBeFalsy();
