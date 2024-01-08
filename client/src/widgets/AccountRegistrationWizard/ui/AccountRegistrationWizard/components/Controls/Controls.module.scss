@@ -1,6 +1,11 @@
 .ButtonContainer {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+.LoadingText {
+  margin-left: auto;
 }
 
 .NextButton {

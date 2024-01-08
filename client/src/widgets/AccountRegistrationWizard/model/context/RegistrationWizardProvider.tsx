@@ -22,6 +22,8 @@ export const RegistrationWizardProvider = (props: RegistrationWizardProviderProp
   const [wizardData, setWizardData] = useState<IWizardData>(initialWizardData);
   const [isNextStepEnabled, setIsNextStepEnabled] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
+  // Loading state of async operations
+  const [isLoading, setIsLoading] = useState(false);
 
   const contextValue: RegistrationWizardContextProps = {
     activeStep,
@@ -32,6 +34,8 @@ export const RegistrationWizardProvider = (props: RegistrationWizardProviderProp
     setIsNextStepEnabled,
     error,
     setError,
+    isLoading,
+    setIsLoading,
   };
 
   // Change active step in LS

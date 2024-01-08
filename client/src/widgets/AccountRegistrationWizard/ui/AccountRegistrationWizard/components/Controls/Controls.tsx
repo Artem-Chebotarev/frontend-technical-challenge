@@ -9,11 +9,20 @@ import { senData } from '@/shared/lib/sendData/sendData';
 import cls from './Controls.module.scss';
 
 export const Controls = () => {
-  const { activeStep, wizardData, isNextStepEnabled, setActiveStep, setWizardData, setError } =
-    useWizardContext();
+  const {
+    activeStep,
+    wizardData,
+    isNextStepEnabled,
+    setActiveStep,
+    setWizardData,
+    setError,
+    isLoading,
+    setIsLoading,
+  } = useWizardContext();
 
   const handleDoneOnClick = async () => {
     try {
+      setIsLoading(true);
       // Send collected data to API
       const status = await senData('account', wizardData);
 
@@ -30,6 +39,8 @@ export const Controls = () => {
 
         setError(e.message);
       }
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -37,7 +48,9 @@ export const Controls = () => {
     <div className={cls.ButtonContainer}>
       {/* Prev Step Button */}
       {activeStep > 1 && activeStep <= MAX_STEPS && (
-        <Button onClick={() => setActiveStep((prev) => prev - 1)}>Prev Step</Button>
+        <Button onClick={() => setActiveStep((prev) => prev - 1)} disabled={isLoading}>
+          Prev Step
+        </Button>
       )}
 
       {/* Next Step Button */}
@@ -52,9 +65,12 @@ export const Controls = () => {
         </Button>
       )}
 
+      {/* Show loading status of async operations */}
+      {isLoading && <p className={cls.LoadingText}>Loading...</p>}
+
       {/* Done Button */}
       {activeStep === MAX_STEPS && (
-        <Button className={cls.NextButton} onClick={handleDoneOnClick}>
+        <Button className={cls.NextButton} onClick={handleDoneOnClick} disabled={isLoading}>
           Done
         </Button>
       )}
