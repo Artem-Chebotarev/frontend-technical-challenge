@@ -1,16 +1,15 @@
-import { IWizardData, TEventValue } from '@/widgets/AccountRegistrationWizard/model/types';
 import { PersonalDetails } from '../PersonalDetails/PersonalDetails';
 import { BusinessDetails } from '../BusinessDetails/BusinessDetails';
 import { PointOfSale } from '../PointOfSale/PointOfSale';
 import { DeliveryChannel } from '../DeliveryChannel/DeliveryChannel';
 import { Complete } from '../Complete/Complete';
 import { Controls } from '../Controls/Controls';
-import { useWizardContext } from '../../../../model/context/hooks/useWizardContext';
+import { useFormData } from './hooks/useFormData';
 
 import cls from './WidgetContainer.module.scss';
 
 export const WidgetContainer = () => {
-  const { activeStep, wizardData, setWizardData } = useWizardContext();
+  const { activeStep, handleFormOnChange, handleFormOnSubmit } = useFormData();
 
   // Function to render active step
   const renderActiveStep = (step: number) => {
@@ -30,39 +29,13 @@ export const WidgetContainer = () => {
     }
   };
 
-  // Handler onChange fields in form
-  const handleFormOnChange = (event: React.FormEvent<HTMLFormElement>) => {
-    const target = event.target as HTMLInputElement;
-    const { name, type } = target;
-
-    let value: TEventValue = target.value;
-
-    if (type === 'checkbox') {
-      // Get filed of wizard data by name
-      const entitiesIds = wizardData[name as keyof IWizardData];
-
-      // Check whether entitiesIds is array
-      if (Array.isArray(entitiesIds)) {
-        // Checkbox logic
-        value = entitiesIds.includes(+value)
-          ? entitiesIds.filter((elem) => elem !== +value)
-          : [...entitiesIds, +value];
-      }
-    }
-
-    // Change wizard data
-    setWizardData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-
   return (
     <form
       className={cls.WidgetContainer}
       data-testid='WidgetContainer'
       aria-labelledby='form-title'
       onChange={handleFormOnChange}
+      onSubmit={handleFormOnSubmit}
     >
       {/* Content of the active step */}
       {renderActiveStep(activeStep)}
