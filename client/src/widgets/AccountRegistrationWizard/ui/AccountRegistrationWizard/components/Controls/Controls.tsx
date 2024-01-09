@@ -1,48 +1,11 @@
 import { Button, ButtonTheme } from '@/shared/ui/Button';
-import {
-  MAX_STEPS,
-  wizardDataDefault,
-} from '@/widgets/AccountRegistrationWizard/model/consts/wizard';
+import { MAX_STEPS } from '@/widgets/AccountRegistrationWizard/model/consts/wizard';
 import { useWizardContext } from '@/widgets/AccountRegistrationWizard/model/context/hooks/useWizardContext';
-import { senData } from '@/shared/lib/sendData/sendData';
 
 import cls from './Controls.module.scss';
 
 export const Controls = () => {
-  const {
-    activeStep,
-    wizardData,
-    isNextStepEnabled,
-    setActiveStep,
-    setWizardData,
-    setError,
-    isLoading,
-    setIsLoading,
-  } = useWizardContext();
-
-  const handleDoneOnClick = async () => {
-    try {
-      setIsLoading(true);
-      // Send collected data to API
-      const status = await senData('account', wizardData);
-
-      if (status === 200) {
-        // Reset wizard data and active step to default
-        setActiveStep(1);
-        setWizardData(wizardDataDefault);
-      } else {
-        setError('Failed to send data please try again later');
-      }
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        console.error(e.message);
-
-        setError(e.message);
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  const { activeStep, isNextStepEnabled, setActiveStep, isLoading } = useWizardContext();
 
   return (
     <div className={cls.ButtonContainer}>
@@ -70,7 +33,7 @@ export const Controls = () => {
 
       {/* Done Button */}
       {activeStep === MAX_STEPS && (
-        <Button className={cls.NextButton} onClick={handleDoneOnClick} disabled={isLoading}>
+        <Button className={cls.NextButton} type='submit' disabled={isLoading}>
           Done
         </Button>
       )}

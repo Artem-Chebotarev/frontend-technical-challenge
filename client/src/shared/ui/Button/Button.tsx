@@ -34,6 +34,7 @@ export const Button = (props: IButtonProps) => {
     theme = ButtonTheme.ACTIVE_GREEN,
     disabled,
     fullWidth,
+    type = 'button',
     ...otherProps
   } = props;
 
@@ -45,8 +46,8 @@ export const Button = (props: IButtonProps) => {
   return (
     <button
       {...otherProps}
-      type='button'
       className={classNames(cls.Button, mods, [className, cls[theme]])}
+      type={type}
       aria-disabled={disabled}
     >
       {children}
